@@ -2,8 +2,10 @@ from flask import Flask, request
 # import keras
 import random as rd
 # import numpy as np
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 def index():
@@ -40,7 +42,3 @@ def heatmap():
         predictions.append(row)
 
     return {"data": predictions}
-
-
-if __name__ == "__main__":
-    app.run(debug = True)
