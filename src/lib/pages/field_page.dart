@@ -12,7 +12,6 @@ class Field extends StatefulWidget {
 }
 
 class _FieldState extends State<Field> {
-  List<String> urls = [];
   int? pressed;
   bool scanned = false;
   List<Row> rows = [];
@@ -81,6 +80,8 @@ class _FieldState extends State<Field> {
                 onTapOutside: (event) {
                   setState(() {
                     pressed = null;
+                    scanned = false;
+                    rows = [];
                   });
                 },
                 child: SizedBox(
