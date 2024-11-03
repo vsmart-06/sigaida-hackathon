@@ -10,6 +10,8 @@
 .svn/
 migrate_working_dir/
 .venv
+__pycache__/
+images/
 
 # IntelliJ related
 *.iml
@@ -31,7 +33,6 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 build/
-__pycache__/
 
 # Symbolication related
 app.*.symbols
