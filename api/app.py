@@ -21,7 +21,7 @@ def heatmap():
 
     # model = keras.models.load_model('./tea_classifier.h5', compile=False)
 
-    path = f"./images/section {section}/"
+    path = f"./images/section_{section}/"
     predictions = []
     for i in range(1, width+1):
         row = []
