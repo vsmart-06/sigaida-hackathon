@@ -1,7 +1,7 @@
 from flask import Flask, request
 # import keras
 import random as rd
-import numpy as np
+# import numpy as np
 from flask_cors import CORS
 
 app = Flask(__name__)
