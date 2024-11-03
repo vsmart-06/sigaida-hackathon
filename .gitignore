@@ -11,8 +11,6 @@
 migrate_working_dir/
 .venv
 __pycache__/
-images/
-images/section_1/
 
 # IntelliJ related
 *.iml
