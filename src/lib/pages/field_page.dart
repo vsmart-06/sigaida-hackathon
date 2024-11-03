@@ -2,6 +2,7 @@ import "dart:convert";
 import "package:flutter/material.dart";
 import "package:google_fonts/google_fonts.dart";
 import "package:http/http.dart";
+import "package:loading_animation_widget/loading_animation_widget.dart";
 
 class Field extends StatefulWidget {
   const Field({super.key});
@@ -17,7 +18,7 @@ class _FieldState extends State<Field> {
   List<Row> rows = [];
 
   void getData() async {
-    var response = await post(Uri.parse("http://127.0.0.1:5000/section-heatmap"), body: {"width": "15", "height": "14", "section": "${pressed!}"});
+    var response = await post(Uri.parse("http://127.0.0.1:5000/section-heatmap"), body: {"width": "15", "height": "14", "section": "${pressed!+1}"});
 
     var section_data = jsonDecode(response.body)["data"];
 
@@ -27,14 +28,14 @@ class _FieldState extends State<Field> {
         Container? t;
         double box_width = 20;
         double box_height = 20;
-        if (x == 0) {
+        if (x == 1) {
           t = Container(
             color: Colors.green,
             width: box_width,
             height: box_height,
           );
         }
-        else if (x == 1) {
+        else if (x == 0) {
           t = Container(
             color: Colors.orange,
             width: box_width,
@@ -102,7 +103,7 @@ class _FieldState extends State<Field> {
                           generateHeatmap();
                         });
                       },
-                    ) : Row(
+                    ) : ((rows.isNotEmpty) ? Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
@@ -164,7 +165,7 @@ class _FieldState extends State<Field> {
                           ],
                         )
                       ],
-                    ),
+                    ) : LoadingAnimationWidget.inkDrop(color: Colors.blue, size: 200)),
                   ),
                 )),
           )
